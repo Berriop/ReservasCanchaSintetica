@@ -11,9 +11,9 @@ namespace Cancha_Sintetica.Controladores
             BD = bd;
         }
 
-        public void AgregarCancha(string id, float precio, string id_inventario)
+        public void AgregarCancha(string id, float precio)
         {
-            var cancha = new Cancha { Id = id, Precio = precio, IdInventario = id_inventario };
+            var cancha = new Cancha { Id = id, Precio = precio};
 
             if(!cancha.ValidarCancha(out string mensaje_error))
             {

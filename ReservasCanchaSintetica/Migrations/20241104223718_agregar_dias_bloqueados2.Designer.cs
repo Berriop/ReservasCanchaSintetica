@@ -3,6 +3,7 @@ using System;
 using Cancha_Sintetica;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ReservasCanchaSintetica.Migrations
 {
     [DbContext(typeof(CanchaSinteticaContext))]
-    partial class CanchaSinteticaContextModelSnapshot : ModelSnapshot
+    [Migration("20241104223718_agregar_dias_bloqueados2")]
+    partial class agregar_dias_bloqueados2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.35");

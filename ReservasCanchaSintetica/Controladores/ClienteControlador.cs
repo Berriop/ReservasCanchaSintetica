@@ -41,7 +41,55 @@ namespace Cancha_Sintetica.Controladores
 
         public void RealizarReserva(string id, DateTime fecha, int cantidad_horas, int cantidad_balones, int cantidad_aguas, float precio_total, string documento_cliente, string id_cancha)
         {
+            var controlador_reserva = new ReservaControlador(BD);
+            controlador_reserva.AgregarReserva(id, fecha, cantidad_horas, cantidad_balones, cantidad_aguas, precio_total, documento_cliente, id_cancha);
+        }
 
+        public List<Reserva> VisualizarReservas(string documento_cliente)
+        {
+            var cliente = BD.Clientes.FirstOrDefault(c => c.Documento == documento_cliente);
+
+            if(cliente == null)
+            {
+                throw new Exception("El cliente no existe.");
+            }
+
+            var reservas = BD.Reservas.Where(r => r.DocumentoCliente == documento_cliente).ToList();
+
+            if (reservas.Count == 0)
+            {
+                throw new Exception("No hay reservas para este cliente.");
+            }
+
+            return reservas;
+        }
+
+        public void CancelarReserva(string id_reserva, string documento_cliente)
+        {
+            var cliente = BD.Clientes.FirstOrDefault(c => c.Documento == documento_cliente);
+
+            if (cliente == null)
+            {
+                throw new Exception("El cliente no existe.");
+            }
+
+            var reserva = BD.Reservas.FirstOrDefault(r => r.Id == id_reserva);
+
+            if(reserva == null)
+            {
+                throw new Exception("La reserva no existe");
+            }
+
+            if(reserva.DocumentoCliente != documento_cliente)
+            {
+                throw new Exception("La reserva no pertenece a este cliente");
+            }
+
+            BD.Reservas.Remove(reserva);
+            BD.SaveChanges();
+
+            cliente.Saldo += reserva.PrecioTotal;
+            BD.SaveChanges();
         }
     }
 }

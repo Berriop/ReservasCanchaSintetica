@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Cancha_Sintetica.Modelos;
 using Microsoft.EntityFrameworkCore;
+using ReservasCanchaSintetica;
 
 namespace Cancha_Sintetica
 {
@@ -20,6 +21,7 @@ namespace Cancha_Sintetica
         public DbSet<ReservaTorneo> ReservaTorneos { get; set; }
         public DbSet<Torneo> Torneos { get; set; }
         public DbSet<TorneoXEquipo> TorneoXEquipos { get; set; }
+        public DbSet<DiaBloqueado> DiasBloqueados { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

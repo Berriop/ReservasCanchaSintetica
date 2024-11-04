@@ -14,17 +14,31 @@ namespace Cancha_Sintetica.Controladores
         public void AgregarReserva(string id, DateTime fecha, int cantidad_horas, int cantidad_balones, int cantidad_aguas, float precio_total, string documento_cliente, string id_cancha)
         {
             var reserva = new Reserva { Id = id, Fecha = fecha, CantidadHoras = cantidad_horas, CantidadBalones = cantidad_balones, CantidadAguas = cantidad_aguas, PrecioTotal = precio_total, DocumentoCliente = documento_cliente, IdCancha = id_cancha };
-            
             if (!reserva.ValidarReserva(out string mensaje_error))
             {
                 throw new Exception(mensaje_error);
             }
+
+            var dia_bloqueado = BD.DiasBloqueados.FirstOrDefault(d => d.Fecha.Date == reserva.Fecha.Date);
+            if(dia_bloqueado != null)
+            {
+                throw new Exception("No se pude realizar reservar para el dia seleccionado.");
+            }
+
             ValidarDisponibilidadCancha(reserva.IdCancha, reserva.Fecha, reserva.CantidadHoras);
 
             var cliente = BD.Clientes.Find(reserva.DocumentoCliente);
             ValidarSaldoSuficiente(cliente, reserva.PrecioTotal);
 
             BD.Add(reserva);
+            BD.SaveChanges();
+
+            cliente.Saldo -= precio_total;
+            BD.SaveChanges();
+
+            var inventario = BD.Inventarios.FirstOrDefault();
+            inventario.CantidadBalones -= cantidad_balones;
+            inventario.CantidadAguas -= cantidad_aguas;
             BD.SaveChanges();
         }
 
