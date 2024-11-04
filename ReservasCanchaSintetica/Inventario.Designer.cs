@@ -36,6 +36,7 @@
             numericUpDown2 = new NumericUpDown();
             button2 = new Button();
             listView1 = new ListView();
+            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
             SuspendLayout();
@@ -117,6 +118,15 @@
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
             // 
+            // button3
+            // 
+            button3.Location = new Point(673, 401);
+            button3.Font = new Font("Arial", 10);
+            button3.Name = "button3";
+            button3.AutoSize = true;
+            button3.Text = "Regresar";
+            button3.UseVisualStyleBackColor = true;
+            // 
             // Inventario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -124,6 +134,7 @@
             BackgroundImage = Properties.Resources.canchafondo;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
+            Controls.Add(button3);
             Controls.Add(listView1);
             Controls.Add(button2);
             Controls.Add(numericUpDown2);
@@ -151,5 +162,6 @@
         private NumericUpDown numericUpDown2;
         private Button button2;
         private ListView listView1;
+        private Button button3;
     }
 }
