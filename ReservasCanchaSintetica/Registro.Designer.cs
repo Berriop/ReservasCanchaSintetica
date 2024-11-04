@@ -55,7 +55,7 @@
             label1.Name = "label1";
             label1.Size = new Size(98, 26);
             label1.TabIndex = 14;
-            label1.Text = "Registro";
+            label1.Text = "REGISTRO";
             // 
             // label2
             // 
