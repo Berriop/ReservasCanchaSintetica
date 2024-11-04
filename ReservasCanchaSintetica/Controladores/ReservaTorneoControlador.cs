@@ -1,19 +1,38 @@
 ﻿using Cancha_Sintetica.Modelos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cancha_Sintetica.Controladores
 {
     internal class ReservaTorneoControlador
     {
-        public static void agregar_reserva_torneo(string id, DateTime fecha, int cantidad_horas, int cantidad_balones, int cantidad_aguas, string documento_administrador, string id_torneo, string id_cancha)
+        private readonly CanchaSinteticaContext BD;
+
+        public ReservaTorneoControlador(CanchaSinteticaContext bd)
         {
-            using var db = new CanchaSinteticaContext();
-            db.Add(new ReservaTorneo { Id = id, Fecha = fecha, CantidadHoras = cantidad_horas, CantidadBalones = cantidad_balones, CantidadAguas = cantidad_aguas, DocumentoAdministrador = documento_administrador, IdTorneo = id_torneo, IdCancha = id_cancha });
-            db.SaveChanges();
+            BD = bd;
+        }
+
+        public void AgregarReservaTorneo(string id, DateTime fecha, int cantidad_horas, int cantidad_balones, int cantidad_aguas, string documento_administrador, string id_torneo, string id_cancha)
+        {
+            var reserva_torneo = new ReservaTorneo { Id = id, Fecha = fecha, CantidadHoras = cantidad_horas, CantidadBalones = cantidad_balones, CantidadAguas = cantidad_aguas, DocumentoAdministrador = documento_administrador, IdTorneo = id_torneo, IdCancha = id_cancha };
+            
+            if(!reserva_torneo.ValidarReserva(out string mensaje_error))
+            {
+                throw new Exception(mensaje_error);
+            }
+            VerificarDisponibilidadParaTorneos(reserva_torneo.IdCancha, reserva_torneo.Fecha, reserva_torneo.CantidadHoras);
+
+            BD.Add(reserva_torneo);
+            BD.SaveChanges();
+        }
+
+        public bool VerificarDisponibilidadParaTorneos(string id_cancha, DateTime fecha, int cantidad_horas)
+        {
+            var reservas = BD.Reservas.Where(r => r.IdCancha == id_cancha && r.Fecha < fecha.AddHours(cantidad_horas)).ToList();
+            if (reservas.Any())
+            {
+                throw new Exception("La cancha ya está ocupada para el horario solicitado.");
+            }
+            return true;
         }
     }
 }

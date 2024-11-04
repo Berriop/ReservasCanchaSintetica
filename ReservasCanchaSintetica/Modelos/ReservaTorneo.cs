@@ -27,5 +27,42 @@ namespace Cancha_Sintetica.Modelos
         public Cancha Cancha { get; set; }
         public ICollection<CanchaXReservaTorneo> CanchaXReservaTorneos { get; set; }
 
+        public bool ValidarReserva(out string mensaje_error)
+        {
+            mensaje_error = "";
+
+            if (Fecha < DateTime.Now)
+            {
+                mensaje_error = "La fecha de reserva debe ser futura.";
+                return false;
+            }
+            if (CantidadHoras < 1 || CantidadHoras > 4)
+            {
+                mensaje_error = "La cantidad de horas debe estar entre 1 y 4.";
+                return false;
+            }
+            if (CantidadBalones < 0 || CantidadAguas < 0)
+            {
+                mensaje_error = "Las cantidades de balones y aguas no pueden ser negativas.";
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(DocumentoAdministrador))
+            {
+                mensaje_error = "La cancha debe tener un Documento del Administrador asociado.";
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(IdTorneo))
+            {
+                mensaje_error = "La cancha debe tener un ID de torneo asociado.";
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(IdCancha))
+            {
+                mensaje_error = "La cancha debe tener un ID de cancha asociado.";
+                return false;
+            }
+
+            return true;
+        }
     }
 }
