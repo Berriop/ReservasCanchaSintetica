@@ -38,6 +38,7 @@ namespace ReservasCanchaSintetica
             button1 = new Button();
             comboBox2 = new ComboBox();
             label4 = new Label();
+            comboBox3 = new ComboBox();
             SuspendLayout();
             // 
             // label1
@@ -116,6 +117,14 @@ namespace ReservasCanchaSintetica
             label4.TabIndex = 4;
             label4.Text = "Cancha";
             // 
+            // comboBox3
+            // 
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Location = new Point(334, 250);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(121, 23);
+            comboBox3.TabIndex = 7;
+            // 
             // RealizarReserva
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -123,6 +132,7 @@ namespace ReservasCanchaSintetica
             BackgroundImage = Properties.Resources.canchafondo;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
+            Controls.Add(comboBox3);
             Controls.Add(label4);
             Controls.Add(comboBox2);
             Controls.Add(button1);
@@ -147,5 +157,6 @@ namespace ReservasCanchaSintetica
         private Button button1;
         private ComboBox comboBox2;
         private Label label4;
+        private ComboBox comboBox3;
     }
 }
