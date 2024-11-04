@@ -1,6 +1,6 @@
 ﻿namespace ReservasCanchaSintetica
 {
-    partial class AgregarEquipo
+    partial class CrearEquipo
     {
         /// <summary>
         /// Required designer variable.
@@ -30,11 +30,10 @@
         {
             label1 = new Label();
             label2 = new Label();
-            comboBox1 = new ComboBox();
+            textBox1 = new TextBox();
             label3 = new Label();
-            comboBox2 = new ComboBox();
+            textBox2 = new TextBox();
             button1 = new Button();
-            button2 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -42,11 +41,11 @@
             label1.AutoSize = true;
             label1.Font = new Font("Arial", 16F, FontStyle.Bold);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(300, 46);
+            label1.Location = new Point(314, 46);
             label1.Name = "label1";
-            label1.Size = new Size(214, 26);
-            label1.TabIndex = 0;
-            label1.Text = "AGREGAR EQUIPO";
+            label1.Size = new Size(181, 26);
+            label1.TabIndex = 4;
+            label1.Text = "CREAR EQUIPO";
             // 
             // label2
             // 
@@ -54,17 +53,16 @@
             label2.Font = new Font("Arial", 14F);
             label2.Location = new Point(61, 128);
             label2.Name = "label2";
-            label2.Size = new Size(69, 22);
-            label2.TabIndex = 7;
-            label2.Text = "Torneo";
+            label2.Size = new Size(168, 22);
+            label2.TabIndex = 3;
+            label2.Text = "Nombre de equipo";
             // 
-            // comboBox1
+            // textBox1
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(182, 128);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 2;
+            textBox1.Location = new Point(285, 128);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(100, 23);
+            textBox1.TabIndex = 0;
             // 
             // label3
             // 
@@ -72,54 +70,44 @@
             label3.Font = new Font("Arial", 14F);
             label3.Location = new Point(61, 190);
             label3.Name = "label3";
-            label3.Size = new Size(70, 22);
-            label3.TabIndex = 6;
-            label3.Text = "Equipo";
+            label3.Size = new Size(193, 22);
+            label3.TabIndex = 2;
+            label3.Text = "Número de jugadores";
             // 
-            // comboBox2
+            // textBox2
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(182, 189);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(121, 23);
-            comboBox2.TabIndex = 4;
+            textBox2.Location = new Point(285, 189);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(100, 23);
+            textBox2.TabIndex = 1;
             // 
             // button1
             // 
-            button1.Location = new Point(339, 189);
+            button1.AutoSize = true;
+            button1.Font = new Font("Arial", 12F, FontStyle.Bold);
+            button1.Location = new Point(380, 378);
             button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 5;
+            button1.Size = new Size(61, 29);
+            button1.TabIndex = 0;
             button1.Text = "Crear";
             button1.UseVisualStyleBackColor = true;
             // 
-            // button2
-            // 
-            button2.Font = new Font("Arial", 12F, FontStyle.Bold);
-            button2.AutoSize = true;
-            button2.Location = new Point(380, 378);
-            button2.Name = "button2";
-            button2.Size = new Size(50, 23);
-            button2.TabIndex = 0;
-            button2.Text = "Agregar";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // AgregarEquipo
+            // CrearEquipo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.canchafondo;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
-            Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(comboBox2);
+            Controls.Add(textBox2);
             Controls.Add(label3);
-            Controls.Add(comboBox1);
+            Controls.Add(textBox1);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "AgregarEquipo";
-            Text = "AgregarEquipo";
+            Name = "CrearEquipo";
+            Text = "CrearEquipo";
+            Load += CrearEquipo_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -128,10 +116,9 @@
 
         private Label label1;
         private Label label2;
-        private ComboBox comboBox1;
+        private TextBox textBox1;
         private Label label3;
-        private ComboBox comboBox2;
+        private TextBox textBox2;
         private Button button1;
-        private Button button2;
     }
 }
