@@ -1,19 +1,27 @@
 ﻿using Cancha_Sintetica.Modelos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cancha_Sintetica.Controladores
 {
     internal class AdministradorControlador
     {
-        public static void agregar_administrador(string documento, string nombre, string apellidos, string correo, string contraseña)
+        private readonly CanchaSinteticaContext BD;
+
+        public AdministradorControlador(CanchaSinteticaContext bd)
         {
-            using var db = new CanchaSinteticaContext();
-            db.Add(new Administrador { Documento = documento, Nombre = nombre, Apellidos = apellidos, Correo = correo, Contraseña = contraseña });
-            db.SaveChanges();
+            BD = bd;
+        }
+
+        public void AgreagarAdministrador(string documento, string nombre, string apellidos, string correo, string contraseña)
+        {
+            var administrador = new Administrador { Documento = documento, Nombre = nombre, Apellidos = apellidos, Correo = correo, Contraseña = contraseña };
+
+            if(administrador.ValidarAdministrador(out string mensaje_error))
+            {
+                throw new Exception(mensaje_error);
+            }
+
+            BD.Add(administrador);
+            BD.SaveChanges();
         }
     }
 }
