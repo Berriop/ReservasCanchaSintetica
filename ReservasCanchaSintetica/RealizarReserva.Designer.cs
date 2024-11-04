@@ -39,6 +39,7 @@ namespace ReservasCanchaSintetica
             comboBox2 = new ComboBox();
             label4 = new Label();
             comboBox3 = new ComboBox();
+            button2 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -125,6 +126,16 @@ namespace ReservasCanchaSintetica
             comboBox3.Size = new Size(121, 23);
             comboBox3.TabIndex = 7;
             // 
+            // button2
+            // 
+            button2.Location = new Point(673, 401);
+            button2.Font = new Font("Arial", 10);
+            button2.Name = "button2";
+            button2.AutoSize = true;
+            button2.TabIndex = 3;
+            button2.Text = "Regresar";
+            button2.UseVisualStyleBackColor = true;
+            // 
             // RealizarReserva
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -132,6 +143,7 @@ namespace ReservasCanchaSintetica
             BackgroundImage = Properties.Resources.canchafondo;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
+            Controls.Add(button2);
             Controls.Add(comboBox3);
             Controls.Add(label4);
             Controls.Add(comboBox2);
@@ -158,5 +170,6 @@ namespace ReservasCanchaSintetica
         private ComboBox comboBox2;
         private Label label4;
         private ComboBox comboBox3;
+        private Button button2;
     }
 }

@@ -44,6 +44,7 @@
             textBox6 = new TextBox();
             textBox7 = new TextBox();
             button1 = new Button();
+            button2 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -53,7 +54,7 @@
             label1.ForeColor = Color.Black;
             label1.Location = new Point(340, 40);
             label1.Name = "label1";
-            label1.Size = new Size(98, 26);
+            label1.Size = new Size(128, 26);
             label1.TabIndex = 14;
             label1.Text = "REGISTRO";
             // 
@@ -171,12 +172,23 @@
             // 
             // button1
             // 
-            button1.Location = new Point(350, 380);
+            button1.Location = new Point(374, 382);
+            button1.Font = new Font("Arial", 10);
             button1.Name = "button1";
-            button1.Size = new Size(75, 23);
+            button1.AutoSize = true;
             button1.TabIndex = 7;
             button1.Text = "Registrarse";
             button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(673, 401);
+            button2.Font = new Font("Arial", 10);
+            button2.Name = "button2";
+            button2.AutoSize = true;
+            button2.TabIndex = 3;
+            button2.Text = "Regresar";
+            button2.UseVisualStyleBackColor = true;
             // 
             // Registro
             // 
@@ -185,6 +197,7 @@
             BackgroundImage = Properties.Resources.canchafondo;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
+            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(textBox7);
             Controls.Add(textBox6);
@@ -226,5 +239,6 @@
         private TextBox textBox6;
         private TextBox textBox7;
         private Button button1;
+        private Button button2;
     }
 }

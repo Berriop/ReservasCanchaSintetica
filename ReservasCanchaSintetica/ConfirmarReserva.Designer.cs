@@ -33,6 +33,7 @@
             label2 = new Label();
             button1 = new Button();
             comboBox1 = new ComboBox();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
             // 
@@ -61,7 +62,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Arial", 14F);
-            label2.Location = new Point(624, 382);
+            label2.Location = new Point(69, 377);
             label2.Name = "label2";
             label2.Size = new Size(55, 22);
             label2.TabIndex = 4;
@@ -86,6 +87,16 @@
             comboBox1.Size = new Size(121, 23);
             comboBox1.TabIndex = 6;
             // 
+            // button2
+            // 
+            button2.Location = new Point(673, 401);
+            button2.Font = new Font("Arial", 10);
+            button2.Name = "button2";
+            button2.AutoSize = true;
+            button2.TabIndex = 3;
+            button2.Text = "Regresar";
+            button2.UseVisualStyleBackColor = true;
+            // 
             // ConfirmarReserva
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -93,6 +104,7 @@
             BackgroundImage = Properties.Resources.canchafondo;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
+            Controls.Add(button2);
             Controls.Add(comboBox1);
             Controls.Add(button1);
             Controls.Add(label2);
@@ -112,5 +124,6 @@
         private Label label2;
         private Button button1;
         private ComboBox comboBox1;
+        private Button button2;
     }
 }

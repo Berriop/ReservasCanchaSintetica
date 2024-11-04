@@ -31,6 +31,7 @@
             label1 = new Label();
             button1 = new Button();
             button2 = new Button();
+            button3 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -64,6 +65,16 @@
             button2.Text = "Agregar equipo";
             button2.UseVisualStyleBackColor = true;
             // 
+            // button3
+            // 
+            button3.Location = new Point(673, 401);
+            button3.Font = new Font("Arial", 10);
+            button3.Name = "button3";
+            button3.AutoSize = true;
+            button3.TabIndex = 3;
+            button3.Text = "Regresar";
+            button3.UseVisualStyleBackColor = true;
+            // 
             // Torneos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -71,6 +82,7 @@
             BackgroundImage = Properties.Resources.canchafondo;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
+            Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label1);
@@ -85,5 +97,6 @@
         private Label label1;
         private Button button1;
         private Button button2;
+        private Button button3;
     }
 }

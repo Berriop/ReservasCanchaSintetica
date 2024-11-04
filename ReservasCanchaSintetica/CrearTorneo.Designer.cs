@@ -40,6 +40,7 @@
             textBox2 = new TextBox();
             textBox3 = new TextBox();
             button1 = new Button();
+            button2 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -55,17 +56,17 @@
             // 
             // dateTimePicker1
             // 
+            dateTimePicker1.Format = DateTimePickerFormat.Short;
             dateTimePicker1.Location = new Point(301, 120);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
             dateTimePicker1.Size = new Size(200, 23);
             dateTimePicker1.TabIndex = 1;
             // 
             // dateTimePicker2
             // 
+            dateTimePicker2.Format = DateTimePickerFormat.Short;
             dateTimePicker2.Location = new Point(301, 170);
             dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Format = DateTimePickerFormat.Short;
             dateTimePicker2.Size = new Size(200, 23);
             dateTimePicker2.TabIndex = 2;
             // 
@@ -142,14 +143,24 @@
             // 
             // button1
             // 
-            button1.Font = new Font("Arial", 12F, FontStyle.Bold);
             button1.AutoSize = true;
+            button1.Font = new Font("Arial", 12F, FontStyle.Bold);
             button1.Location = new Point(380, 378);
             button1.Name = "button1";
-            button1.Size = new Size(50, 23);
+            button1.Size = new Size(61, 29);
             button1.TabIndex = 0;
             button1.Text = "Crear";
             button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(673, 401);
+            button2.Font = new Font("Arial", 10);
+            button2.Name = "button2";
+            button2.AutoSize = true;
+            button2.TabIndex = 3;
+            button2.Text = "Regresar";
+            button2.UseVisualStyleBackColor = true;
             // 
             // CrearTorneo
             // 
@@ -158,6 +169,7 @@
             BackgroundImage = Properties.Resources.canchafondo;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
+            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(textBox3);
             Controls.Add(textBox2);
@@ -190,5 +202,6 @@
         private TextBox textBox2;
         private TextBox textBox3;
         private Button button1;
+        private Button button2;
     }
 }

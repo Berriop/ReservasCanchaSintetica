@@ -34,6 +34,7 @@
             label3 = new Label();
             textBox2 = new TextBox();
             button1 = new Button();
+            button2 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -92,6 +93,16 @@
             button1.Text = "Crear";
             button1.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            button2.Location = new Point(673, 401);
+            button2.Font = new Font("Arial", 10);
+            button2.Name = "button2";
+            button2.AutoSize = true;
+            button2.TabIndex = 3;
+            button2.Text = "Regresar";
+            button2.UseVisualStyleBackColor = true;
+            // 
             // CrearEquipo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -99,6 +110,7 @@
             BackgroundImage = Properties.Resources.canchafondo;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
+            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(textBox2);
             Controls.Add(label3);
@@ -120,5 +132,6 @@
         private Label label3;
         private TextBox textBox2;
         private Button button1;
+        private Button button2;
     }
 }

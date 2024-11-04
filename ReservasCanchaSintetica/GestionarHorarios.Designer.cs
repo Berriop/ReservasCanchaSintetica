@@ -32,6 +32,7 @@
             dateTimePicker1 = new DateTimePicker();
             button1 = new Button();
             button2 = new Button();
+            button3 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -42,13 +43,14 @@
             label1.Location = new Point(267, 47);
             label1.Name = "label1";
             label1.Size = new Size(266, 26);
+            label1.TabIndex = 2;
             label1.Text = "GESTIONAR HORARIOS";
             // 
             // dateTimePicker1
             // 
+            dateTimePicker1.Format = DateTimePickerFormat.Short;
             dateTimePicker1.Location = new Point(556, 108);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
             dateTimePicker1.Size = new Size(200, 23);
             dateTimePicker1.TabIndex = 0;
             // 
@@ -72,6 +74,16 @@
             button2.Text = "Desactivar";
             button2.UseVisualStyleBackColor = true;
             // 
+            // button3
+            // 
+            button3.Location = new Point(673, 401);
+            button3.Font = new Font("Arial", 10);
+            button3.Name = "button3";
+            button3.AutoSize = true;
+            button3.TabIndex = 3;
+            button3.Text = "Regresar";
+            button3.UseVisualStyleBackColor = true;
+            // 
             // GestionarHorarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -79,6 +91,7 @@
             BackgroundImage = Properties.Resources.canchafondo;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
+            Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(dateTimePicker1);
@@ -95,5 +108,6 @@
         private DateTimePicker dateTimePicker1;
         private Button button1;
         private Button button2;
+        private Button button3;
     }
 }
