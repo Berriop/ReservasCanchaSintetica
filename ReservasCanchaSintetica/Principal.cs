@@ -1,15 +1,16 @@
 namespace ReservasCanchaSintetica
 {
-    public partial class Form1 : Form
+    public partial class Principal : Form
     {
-        public Form1()
+        public Principal()
         {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            // Aquí puedes agregar código adicional que quieras que se ejecute al cargar el formulario.
         }
     }
 }
+
