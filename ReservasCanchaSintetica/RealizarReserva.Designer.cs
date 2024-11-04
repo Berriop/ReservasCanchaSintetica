@@ -36,6 +36,8 @@ namespace ReservasCanchaSintetica
             label2 = new Label();
             label3 = new Label();
             button1 = new Button();
+            comboBox2 = new ComboBox();
+            label4 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -52,7 +54,7 @@ namespace ReservasCanchaSintetica
             // dateTimePicker1
             // 
             dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(174, 138);
+            dateTimePicker1.Location = new Point(174, 196);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(200, 23);
             dateTimePicker1.TabIndex = 1;
@@ -60,7 +62,7 @@ namespace ReservasCanchaSintetica
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(174, 205);
+            comboBox1.Location = new Point(174, 250);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(121, 23);
             comboBox1.TabIndex = 2;
@@ -69,7 +71,7 @@ namespace ReservasCanchaSintetica
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Arial", 14F);
-            label2.Location = new Point(61, 139);
+            label2.Location = new Point(61, 197);
             label2.Name = "label2";
             label2.Size = new Size(40, 22);
             label2.TabIndex = 4;
@@ -79,7 +81,7 @@ namespace ReservasCanchaSintetica
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Arial", 14F);
-            label3.Location = new Point(61, 206);
+            label3.Location = new Point(61, 251);
             label3.Name = "label3";
             label3.Size = new Size(50, 22);
             label3.TabIndex = 3;
@@ -96,6 +98,24 @@ namespace ReservasCanchaSintetica
             button1.Text = "Reservar";
             button1.UseVisualStyleBackColor = true;
             // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(174, 150);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(121, 23);
+            comboBox2.TabIndex = 6;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Arial", 14F);
+            label4.Location = new Point(61, 150);
+            label4.Name = "label4";
+            label4.Size = new Size(74, 22);
+            label4.TabIndex = 4;
+            label4.Text = "Cancha";
+            // 
             // RealizarReserva
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -103,6 +123,8 @@ namespace ReservasCanchaSintetica
             BackgroundImage = Properties.Resources.canchafondo;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
+            Controls.Add(label4);
+            Controls.Add(comboBox2);
             Controls.Add(button1);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -123,5 +145,7 @@ namespace ReservasCanchaSintetica
         private Label label2;
         private Label label3;
         private Button button1;
+        private ComboBox comboBox2;
+        private Label label4;
     }
 }
