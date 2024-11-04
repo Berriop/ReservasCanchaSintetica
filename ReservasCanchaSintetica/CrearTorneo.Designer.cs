@@ -57,6 +57,7 @@
             // 
             dateTimePicker1.Location = new Point(301, 120);
             dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Format = DateTimePickerFormat.Short;
             dateTimePicker1.Size = new Size(200, 23);
             dateTimePicker1.TabIndex = 1;
             // 
@@ -64,6 +65,7 @@
             // 
             dateTimePicker2.Location = new Point(301, 170);
             dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Format = DateTimePickerFormat.Short;
             dateTimePicker2.Size = new Size(200, 23);
             dateTimePicker2.TabIndex = 2;
             // 
