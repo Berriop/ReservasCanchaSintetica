@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ReservasCanchaSintetica
+namespace ReservasCanchaSintetica.Modelos
 {
     internal class DiaBloqueado
     {

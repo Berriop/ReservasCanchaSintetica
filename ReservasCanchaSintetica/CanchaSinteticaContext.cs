@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Cancha_Sintetica.Modelos;
 using Microsoft.EntityFrameworkCore;
-using ReservasCanchaSintetica;
+using ReservasCanchaSintetica.Modelos;
 
 namespace Cancha_Sintetica
 {
