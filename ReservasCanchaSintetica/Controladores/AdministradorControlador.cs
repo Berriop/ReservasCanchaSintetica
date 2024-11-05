@@ -103,9 +103,9 @@ namespace Cancha_Sintetica.Controladores
 
         public IEnumerable<dynamic> PromedioPrecioPorMes()
         {
-            var promedioPorMes = BD.Reservas.GroupBy(r => new { r.Fecha.Year, r.Fecha.Month }).Select(g => new { año = g.Key.Year, mes = g.Key.Month, total_reservas = g.Count(), precio_total = g.Sum(r => r.PrecioTotal), promedio_precio = g.Count() > 0 ? g.Sum(r => r.PrecioTotal) / g.Count() : 0 }).OrderBy(h => h.año).ThenBy(h => h.mes).ToList();
+            var promedio_por_mes = BD.Reservas.GroupBy(r => new { r.Fecha.Year, r.Fecha.Month }).Select(g => new { año = g.Key.Year, mes = g.Key.Month, total_reservas = g.Count(), precio_total = g.Sum(r => r.PrecioTotal), promedio_precio = g.Count() > 0 ? g.Sum(r => r.PrecioTotal) / g.Count() : 0 }).OrderBy(h => h.año).ThenBy(h => h.mes).ToList();
 
-            return promedioPorMes;
+            return promedio_por_mes;
         }
     }
 } 
