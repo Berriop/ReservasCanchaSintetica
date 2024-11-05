@@ -19,9 +19,21 @@ namespace Cancha_Sintetica.Controladores
             {
                 throw new Exception(mensaje_error);
             }
+
+            var dia_bloqueado = BD.DiasBloqueados.FirstOrDefault(d => d.Fecha.Date == reserva_torneo.Fecha.Date);
+            if (dia_bloqueado != null)
+            {
+                throw new Exception("No se pude realizar reservar para el dia seleccionado.");
+            }
+
             VerificarDisponibilidadParaTorneos(reserva_torneo.IdCancha, reserva_torneo.Fecha, reserva_torneo.CantidadHoras);
 
             BD.Add(reserva_torneo);
+            BD.SaveChanges();
+
+            var inventario = BD.Inventarios.FirstOrDefault();
+            inventario.CantidadBalones -= cantidad_balones;
+            inventario.CantidadAguas -= cantidad_aguas;
             BD.SaveChanges();
         }
 

@@ -11,9 +11,9 @@ namespace Cancha_Sintetica.Controladores
             BD = bd;
         }
 
-        public void AgregarInventario(string id, int cantidad_balones, int cantidad_aguas, int cantidad_petos)
+        public void AgregarInventario(string id, int cantidad_balones, int cantidad_aguas)
         {
-            var inventario = new Inventario { Id = id, CantidadBalones = cantidad_balones, CantidadAguas = cantidad_aguas, CantidadPetos = cantidad_petos };
+            var inventario = new Inventario { Id = id, CantidadBalones = cantidad_balones, CantidadAguas = cantidad_aguas };
 
             if (!inventario.ValidarInventario(out string mensaje_error))
             {
@@ -24,7 +24,7 @@ namespace Cancha_Sintetica.Controladores
             BD.SaveChanges();
         }
 
-        public bool ValidarInventarioDisponible(int balones_solicitados, int aguas_solicitadas, int petos_solicitados, Inventario inventario)
+        public bool ValidarInventarioDisponible(int balones_solicitados, int aguas_solicitadas, Inventario inventario)
         {
             if (inventario.CantidadBalones < balones_solicitados)
             {
@@ -34,10 +34,7 @@ namespace Cancha_Sintetica.Controladores
             {
                 throw new Exception("No hay suficiente cantidad de aguas en el inventario.");
             }
-            if (inventario.CantidadPetos < petos_solicitados)
-            {
-                throw new Exception("No hay suficiente cantidad de petos en el inventario.");
-            }
+
             return true;
         }
 
