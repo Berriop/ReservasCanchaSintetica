@@ -1,6 +1,6 @@
-﻿using Cancha_Sintetica.Modelos;
+﻿using ReservasCanchaSintetica.Modelos;
 
-namespace Cancha_Sintetica.Controladores
+namespace ReservasCanchaSintetica.Controladores
 {
     internal class ReservaTorneoControlador
     {
@@ -11,9 +11,9 @@ namespace Cancha_Sintetica.Controladores
             BD = bd;
         }
 
-        public void AgregarReservaTorneo(string id, DateTime fecha, int cantidad_horas, int cantidad_balones, int cantidad_aguas, string documento_administrador, string id_torneo, string id_cancha)
+        public void AgregarReservaTorneo(DateTime fecha, int cantidad_horas, int cantidad_balones, int cantidad_aguas, string documento_administrador, string id_torneo, string id_cancha)
         {
-            var reserva_torneo = new ReservaTorneo { Id = id, Fecha = fecha, CantidadHoras = cantidad_horas, CantidadBalones = cantidad_balones, CantidadAguas = cantidad_aguas, DocumentoAdministrador = documento_administrador, IdTorneo = id_torneo, IdCancha = id_cancha };
+            var reserva_torneo = new ReservaTorneo { Fecha = fecha, CantidadHoras = cantidad_horas, CantidadBalones = cantidad_balones, CantidadAguas = cantidad_aguas, DocumentoAdministrador = documento_administrador, IdTorneo = id_torneo, IdCancha = id_cancha };
             
             if(!reserva_torneo.ValidarReserva(out string mensaje_error))
             {
@@ -28,7 +28,7 @@ namespace Cancha_Sintetica.Controladores
 
             VerificarDisponibilidadParaTorneos(reserva_torneo.IdCancha, reserva_torneo.Fecha, reserva_torneo.CantidadHoras);
 
-            BD.Add(reserva_torneo);
+            BD.ReservaTorneos.Add(reserva_torneo);
             BD.SaveChanges();
 
             var inventario = BD.Inventarios.FirstOrDefault();

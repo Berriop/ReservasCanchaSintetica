@@ -25,6 +25,19 @@ namespace ReservasCanchaSintetica.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Canchas",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Precio = table.Column<float>(type: "REAL", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Canchas", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Clientes",
                 columns: table => new
                 {
@@ -42,11 +55,25 @@ namespace ReservasCanchaSintetica.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DiasBloqueados",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Fecha = table.Column<DateTime>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DiasBloqueados", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Equipos",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
-                    Nomrbre = table.Column<string>(type: "TEXT", nullable: false),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Nombre = table.Column<string>(type: "TEXT", nullable: false),
                     CantidadJugadores = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -58,10 +85,10 @@ namespace ReservasCanchaSintetica.Migrations
                 name: "Inventarios",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     CantidadBalones = table.Column<int>(type: "INTEGER", nullable: false),
-                    CantidadAguas = table.Column<int>(type: "INTEGER", nullable: false),
-                    CantidadPetos = table.Column<int>(type: "INTEGER", nullable: false)
+                    CantidadAguas = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -72,7 +99,8 @@ namespace ReservasCanchaSintetica.Migrations
                 name: "Torneos",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Nombre = table.Column<string>(type: "TEXT", nullable: false),
                     FechaInicio = table.Column<DateTime>(type: "TEXT", nullable: false),
                     FechaFinal = table.Column<DateTime>(type: "TEXT", nullable: false),
@@ -85,57 +113,11 @@ namespace ReservasCanchaSintetica.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Canchas",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
-                    Tamaño = table.Column<string>(type: "TEXT", nullable: false),
-                    Precio = table.Column<float>(type: "REAL", nullable: false),
-                    IdInventario = table.Column<string>(type: "TEXT", nullable: false),
-                    InventarioId = table.Column<string>(type: "TEXT", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Canchas", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Canchas_Inventarios_InventarioId",
-                        column: x => x.InventarioId,
-                        principalTable: "Inventarios",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "TorneoXEquipos",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
-                    IdEquipo = table.Column<string>(type: "TEXT", nullable: false),
-                    EquipoId = table.Column<string>(type: "TEXT", nullable: false),
-                    IdTorneo = table.Column<string>(type: "TEXT", nullable: false),
-                    TorneoId = table.Column<string>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TorneoXEquipos", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_TorneoXEquipos_Equipos_EquipoId",
-                        column: x => x.EquipoId,
-                        principalTable: "Equipos",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_TorneoXEquipos_Torneos_TorneoId",
-                        column: x => x.TorneoId,
-                        principalTable: "Torneos",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Reservas",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Fecha = table.Column<DateTime>(type: "TEXT", nullable: false),
                     CantidadHoras = table.Column<int>(type: "INTEGER", nullable: false),
                     CantidadBalones = table.Column<int>(type: "INTEGER", nullable: false),
@@ -144,7 +126,7 @@ namespace ReservasCanchaSintetica.Migrations
                     DocumentoCliente = table.Column<string>(type: "TEXT", nullable: false),
                     ClienteDocumento = table.Column<string>(type: "TEXT", nullable: true),
                     IdCancha = table.Column<string>(type: "TEXT", nullable: false),
-                    CanchaId = table.Column<string>(type: "TEXT", nullable: false)
+                    CanchaId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -166,7 +148,8 @@ namespace ReservasCanchaSintetica.Migrations
                 name: "ReservaTorneos",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Fecha = table.Column<DateTime>(type: "TEXT", nullable: false),
                     CantidadHoras = table.Column<int>(type: "INTEGER", nullable: false),
                     CantidadBalones = table.Column<int>(type: "INTEGER", nullable: false),
@@ -174,9 +157,9 @@ namespace ReservasCanchaSintetica.Migrations
                     DocumentoAdministrador = table.Column<string>(type: "TEXT", nullable: false),
                     AdministradorDocumento = table.Column<string>(type: "TEXT", nullable: true),
                     IdTorneo = table.Column<string>(type: "TEXT", nullable: false),
-                    TorneoId = table.Column<string>(type: "TEXT", nullable: true),
+                    TorneoId = table.Column<int>(type: "INTEGER", nullable: false),
                     IdCancha = table.Column<string>(type: "TEXT", nullable: false),
-                    CanchaId = table.Column<string>(type: "TEXT", nullable: false)
+                    CanchaId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -196,18 +179,48 @@ namespace ReservasCanchaSintetica.Migrations
                         name: "FK_ReservaTorneos_Torneos_TorneoId",
                         column: x => x.TorneoId,
                         principalTable: "Torneos",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TorneoXEquipos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    IdEquipo = table.Column<int>(type: "INTEGER", nullable: false),
+                    EquipoId = table.Column<int>(type: "INTEGER", nullable: false),
+                    IdTorneo = table.Column<int>(type: "INTEGER", nullable: false),
+                    TorneoId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TorneoXEquipos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TorneoXEquipos_Equipos_EquipoId",
+                        column: x => x.EquipoId,
+                        principalTable: "Equipos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TorneoXEquipos_Torneos_TorneoId",
+                        column: x => x.TorneoId,
+                        principalTable: "Torneos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "CanchaXReservaTorneos",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     IdCancha = table.Column<string>(type: "TEXT", nullable: false),
-                    CanchaId = table.Column<string>(type: "TEXT", nullable: false),
+                    CanchaId = table.Column<int>(type: "INTEGER", nullable: false),
                     IdReservaTorneo = table.Column<string>(type: "TEXT", nullable: false),
-                    ReservaTorneoId = table.Column<string>(type: "TEXT", nullable: true)
+                    ReservaTorneoId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -222,13 +235,9 @@ namespace ReservasCanchaSintetica.Migrations
                         name: "FK_CanchaXReservaTorneos_ReservaTorneos_ReservaTorneoId",
                         column: x => x.ReservaTorneoId,
                         principalTable: "ReservaTorneos",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Canchas_InventarioId",
-                table: "Canchas",
-                column: "InventarioId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CanchaXReservaTorneos_CanchaId",
@@ -282,6 +291,12 @@ namespace ReservasCanchaSintetica.Migrations
                 name: "CanchaXReservaTorneos");
 
             migrationBuilder.DropTable(
+                name: "DiasBloqueados");
+
+            migrationBuilder.DropTable(
+                name: "Inventarios");
+
+            migrationBuilder.DropTable(
                 name: "Reservas");
 
             migrationBuilder.DropTable(
@@ -304,9 +319,6 @@ namespace ReservasCanchaSintetica.Migrations
 
             migrationBuilder.DropTable(
                 name: "Torneos");
-
-            migrationBuilder.DropTable(
-                name: "Inventarios");
         }
     }
 }

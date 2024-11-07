@@ -1,6 +1,6 @@
-﻿using Cancha_Sintetica.Modelos;
+﻿using ReservasCanchaSintetica.Modelos;
 
-namespace Cancha_Sintetica.Controladores
+namespace ReservasCanchaSintetica.Controladores
 {
     internal class EquipoControlador
     {
@@ -11,9 +11,9 @@ namespace Cancha_Sintetica.Controladores
             BD = bd;
         }
 
-        public void AgregarEquipo(string id, string nombre, int cantidad_jugadores)
+        public void AgregarEquipo(string nombre, int cantidad_jugadores)
         {
-            var equipo = new Equipo { Id = id, Nombre = nombre, CantidadJugadores = cantidad_jugadores };
+            var equipo = new Equipo {Nombre = nombre, CantidadJugadores = cantidad_jugadores };
 
             if(equipo.ValidarEquipo(out string mensaje_error))
             {
@@ -22,7 +22,7 @@ namespace Cancha_Sintetica.Controladores
 
             ValidarEquiposNoRepetidos();
 
-            BD.Add(equipo);
+            BD.Equipos.Add(equipo);
             BD.SaveChanges();
         }
 

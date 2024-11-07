@@ -1,12 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Cancha_Sintetica.Modelos
+namespace ReservasCanchaSintetica.Modelos
 {
-    internal class CanchaXReservaTorneo
+    public class CanchaXReservaTorneo
     {
         [Key]
-        public string Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
         [ForeignKey(nameof(IdCancha))]
         public string IdCancha { get; set; }
         public Cancha Cancha { get; set; }

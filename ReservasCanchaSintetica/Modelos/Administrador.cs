@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 
-namespace Cancha_Sintetica.Modelos
+namespace ReservasCanchaSintetica.Modelos
 {
-    internal class Administrador
+    public class Administrador
     {
         [Key]
         public string Documento { get; set; }

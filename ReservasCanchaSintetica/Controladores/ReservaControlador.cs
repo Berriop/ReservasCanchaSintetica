@@ -1,6 +1,6 @@
-﻿using Cancha_Sintetica.Modelos;
+﻿using ReservasCanchaSintetica.Modelos;
 
-namespace Cancha_Sintetica.Controladores
+namespace ReservasCanchaSintetica.Controladores
 {
     internal class ReservaControlador
     {
@@ -11,9 +11,9 @@ namespace Cancha_Sintetica.Controladores
             BD = bd;
         }
 
-        public void AgregarReserva(string id, DateTime fecha, int cantidad_horas, int cantidad_balones, int cantidad_aguas, float precio_total, string documento_cliente, string id_cancha)
+        public void AgregarReserva(DateTime fecha, int cantidad_horas, int cantidad_balones, int cantidad_aguas, float precio_total, string documento_cliente, string id_cancha)
         {
-            var reserva = new Reserva { Id = id, Fecha = fecha, CantidadHoras = cantidad_horas, CantidadBalones = cantidad_balones, CantidadAguas = cantidad_aguas, PrecioTotal = precio_total, DocumentoCliente = documento_cliente, IdCancha = id_cancha };
+            var reserva = new Reserva {Fecha = fecha, CantidadHoras = cantidad_horas, CantidadBalones = cantidad_balones, CantidadAguas = cantidad_aguas, PrecioTotal = precio_total, DocumentoCliente = documento_cliente, IdCancha = id_cancha };
             if (!reserva.ValidarReserva(out string mensaje_error))
             {
                 throw new Exception(mensaje_error);
@@ -30,7 +30,7 @@ namespace Cancha_Sintetica.Controladores
             var cliente = BD.Clientes.Find(reserva.DocumentoCliente);
             ValidarSaldoSuficiente(cliente, reserva.PrecioTotal);
 
-            BD.Add(reserva);
+            BD.Reservas.Add(reserva);
             BD.SaveChanges();
 
             cliente.Saldo -= precio_total;

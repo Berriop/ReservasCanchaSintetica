@@ -31,14 +31,15 @@ namespace ReservasCanchaSintetica
         private void InitializeComponent()
         {
             label1 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            comboBox1 = new ComboBox();
+            datetimepicker_fecha = new DateTimePicker();
+            combobox_hora = new ComboBox();
             label2 = new Label();
             label3 = new Label();
             button1 = new Button();
-            comboBox2 = new ComboBox();
+            combobox_cancha = new ComboBox();
             label4 = new Label();
-            comboBox3 = new ComboBox();
+            combo_cantidad_horas = new ComboBox();
+            label5 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -46,35 +47,37 @@ namespace ReservasCanchaSintetica
             label1.AutoSize = true;
             label1.Font = new Font("Arial", 16F, FontStyle.Bold);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(364, 46);
+            label1.Location = new Point(416, 61);
             label1.Name = "label1";
-            label1.Size = new Size(117, 26);
+            label1.Size = new Size(143, 32);
             label1.TabIndex = 5;
             label1.Text = "RESERVA";
             // 
-            // dateTimePicker1
+            // datetimepicker_fecha
             // 
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(174, 196);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 23);
-            dateTimePicker1.TabIndex = 1;
+            datetimepicker_fecha.Format = DateTimePickerFormat.Short;
+            datetimepicker_fecha.Location = new Point(199, 261);
+            datetimepicker_fecha.Margin = new Padding(3, 4, 3, 4);
+            datetimepicker_fecha.Name = "datetimepicker_fecha";
+            datetimepicker_fecha.Size = new Size(228, 27);
+            datetimepicker_fecha.TabIndex = 1;
             // 
-            // comboBox1
+            // combobox_hora
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(174, 250);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 2;
+            combobox_hora.FormattingEnabled = true;
+            combobox_hora.Location = new Point(199, 333);
+            combobox_hora.Margin = new Padding(3, 4, 3, 4);
+            combobox_hora.Name = "combobox_hora";
+            combobox_hora.Size = new Size(138, 28);
+            combobox_hora.TabIndex = 2;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Arial", 14F);
-            label2.Location = new Point(61, 197);
+            label2.Location = new Point(70, 263);
             label2.Name = "label2";
-            label2.Size = new Size(40, 22);
+            label2.Size = new Size(48, 27);
             label2.TabIndex = 4;
             label2.Text = "Día";
             // 
@@ -82,9 +85,9 @@ namespace ReservasCanchaSintetica
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Arial", 14F);
-            label3.Location = new Point(61, 251);
+            label3.Location = new Point(70, 335);
             label3.Name = "label3";
-            label3.Size = new Size(50, 22);
+            label3.Size = new Size(63, 27);
             label3.TabIndex = 3;
             label3.Text = "Hora";
             // 
@@ -92,57 +95,74 @@ namespace ReservasCanchaSintetica
             // 
             button1.AutoSize = true;
             button1.Font = new Font("Arial", 12F, FontStyle.Bold);
-            button1.Location = new Point(380, 378);
+            button1.Location = new Point(434, 504);
+            button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(88, 29);
+            button1.Size = new Size(105, 39);
             button1.TabIndex = 0;
             button1.Text = "Reservar";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
-            // comboBox2
+            // combobox_cancha
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(174, 150);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(121, 23);
-            comboBox2.TabIndex = 6;
+            combobox_cancha.FormattingEnabled = true;
+            combobox_cancha.Location = new Point(199, 199);
+            combobox_cancha.Margin = new Padding(3, 4, 3, 4);
+            combobox_cancha.Name = "combobox_cancha";
+            combobox_cancha.Size = new Size(138, 28);
+            combobox_cancha.TabIndex = 6;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Arial", 14F);
-            label4.Location = new Point(61, 150);
+            label4.Location = new Point(70, 200);
             label4.Name = "label4";
-            label4.Size = new Size(74, 22);
+            label4.Size = new Size(95, 27);
             label4.TabIndex = 4;
             label4.Text = "Cancha";
             // 
-            // comboBox3
+            // combo_cantidad_horas
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(334, 250);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(121, 23);
-            comboBox3.TabIndex = 7;
+            combo_cantidad_horas.FormattingEnabled = true;
+            combo_cantidad_horas.Location = new Point(289, 413);
+            combo_cantidad_horas.Margin = new Padding(3, 4, 3, 4);
+            combo_cantidad_horas.Name = "combo_cantidad_horas";
+            combo_cantidad_horas.Size = new Size(138, 28);
+            combo_cantidad_horas.TabIndex = 7;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Arial", 14F);
+            label5.Location = new Point(70, 413);
+            label5.Name = "label5";
+            label5.Size = new Size(179, 27);
+            label5.TabIndex = 8;
+            label5.Text = "Cantidad Horas";
             // 
             // RealizarReserva
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.canchafondo;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(800, 450);
-            Controls.Add(comboBox3);
+            ClientSize = new Size(914, 600);
+            Controls.Add(label5);
+            Controls.Add(combo_cantidad_horas);
             Controls.Add(label4);
-            Controls.Add(comboBox2);
+            Controls.Add(combobox_cancha);
             Controls.Add(button1);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(comboBox1);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(combobox_hora);
+            Controls.Add(datetimepicker_fecha);
             Controls.Add(label1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "RealizarReserva";
             Text = "RealizarReserva";
+            Load += RealizarReserva_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -150,13 +170,14 @@ namespace ReservasCanchaSintetica
         #endregion
 
         private Label label1;
-        private DateTimePicker dateTimePicker1;
-        private ComboBox comboBox1;
+        private DateTimePicker datetimepicker_fecha;
+        private ComboBox combobox_hora;
         private Label label2;
         private Label label3;
         private Button button1;
-        private ComboBox comboBox2;
+        private ComboBox combobox_cancha;
         private Label label4;
-        private ComboBox comboBox3;
+        private ComboBox combo_cantidad_horas;
+        private Label label5;
     }
 }

@@ -1,11 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Cancha_Sintetica.Modelos
+namespace ReservasCanchaSintetica.Modelos
 {
-    internal class Cancha
+    public class Cancha
     {
         [Key]
-        public string Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
         public float Precio { get; set; }
         public ICollection<Reserva> Reservas { get; set; }
         public ICollection<CanchaXReservaTorneo> CanchaXReservaTorneos { get; set; }
@@ -13,12 +15,6 @@ namespace Cancha_Sintetica.Modelos
         public bool ValidarCancha(out string mensaje_error)
         {
             mensaje_error = "";
-
-            if (string.IsNullOrWhiteSpace(Id))
-            {
-                mensaje_error = "El ID de la cancha no puede estar vacío.";
-                return false;
-            }
 
             if (Precio <= 0)
             {

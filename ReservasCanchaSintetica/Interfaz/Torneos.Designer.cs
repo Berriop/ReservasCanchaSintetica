@@ -31,6 +31,7 @@
             label1 = new Label();
             button1 = new Button();
             button2 = new Button();
+            button3 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -38,42 +39,61 @@
             label1.AutoSize = true;
             label1.Font = new Font("Arial", 16F, FontStyle.Bold);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(355, 47);
+            label1.Location = new Point(406, 63);
             label1.Name = "label1";
-            label1.Size = new Size(123, 26);
+            label1.Size = new Size(150, 32);
             label1.TabIndex = 0;
             label1.Text = "TORNEOS";
             // 
             // button1
             // 
             button1.Font = new Font("Arial", 14F, FontStyle.Bold);
-            button1.Location = new Point(99, 173);
+            button1.Location = new Point(113, 231);
+            button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(200, 80);
+            button1.Size = new Size(229, 107);
             button1.TabIndex = 0;
             button1.Text = "Crear torneo";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
             // 
             // button2
             // 
             button2.Font = new Font("Arial", 14F, FontStyle.Bold);
-            button2.Location = new Point(512, 173);
+            button2.Location = new Point(585, 231);
+            button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
-            button2.Size = new Size(200, 80);
+            button2.Size = new Size(229, 107);
             button2.TabIndex = 0;
             button2.Text = "Agregar equipo";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // button3
+            // 
+            button3.AutoSize = true;
+            button3.Font = new Font("Arial", 10F);
+            button3.Location = new Point(769, 535);
+            button3.Margin = new Padding(3, 4, 3, 4);
+            button3.Name = "button3";
+            button3.Size = new Size(86, 31);
+            button3.TabIndex = 3;
+            button3.Text = "Regresar";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // Torneos
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.canchafondo;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
+            Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Torneos";
             Text = "Torneos";
             ResumeLayout(false);
@@ -85,5 +105,6 @@
         private Label label1;
         private Button button1;
         private Button button2;
+        private Button button3;
     }
 }

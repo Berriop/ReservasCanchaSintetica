@@ -1,7 +1,6 @@
-﻿using Cancha_Sintetica.Modelos;
-using ReservasCanchaSintetica;
+﻿using ReservasCanchaSintetica.Modelos;
 
-namespace Cancha_Sintetica.Controladores
+namespace ReservasCanchaSintetica.Controladores
 {
     internal class AdministradorControlador
     {
@@ -21,31 +20,31 @@ namespace Cancha_Sintetica.Controladores
                 throw new Exception(mensaje_error);
             }
 
-            BD.Add(administrador);
+            BD.Administradores.Add(administrador);
             BD.SaveChanges();
         }
 
         public void AgregarEquipo(string id, string nombre, int cantidad_jugadores)
         {
             var controlador_equipo = new EquipoControlador(BD);
-            controlador_equipo.AgregarEquipo(id, nombre, cantidad_jugadores);
+            controlador_equipo.AgregarEquipo(nombre, cantidad_jugadores);
         }
 
         public void CrearTorneo(string id, string nombre, DateTime fecha_iniico, DateTime fecha_final, float valor_inscripcion, float premio)
         {
             var controlador_torneo = new TorneoControlador(BD);
-            controlador_torneo.AgregarTorneo(id, nombre, fecha_iniico, fecha_final, valor_inscripcion, premio);
+            controlador_torneo.AgregarTorneo(nombre, fecha_iniico, fecha_final, valor_inscripcion, premio);
         }
 
         public void RealizarReservaTorneo(string id, DateTime fecha, int cantidad_horas, int cantidad_balones, int cantidad_aguas, string documento_administrador, string id_torneo, string id_cancha)
         {
             var controlador_reserva = new ReservaTorneoControlador(BD);
-            controlador_reserva.AgregarReservaTorneo(id, fecha, cantidad_horas, cantidad_balones, cantidad_aguas, documento_administrador, id_torneo, id_cancha);
+            controlador_reserva.AgregarReservaTorneo(fecha, cantidad_horas, cantidad_balones, cantidad_aguas, documento_administrador, id_torneo, id_cancha);
         }
 
         public void AgregarElementosInventario(int cantidad_balones, int cantidad_aguas)
         {
-            var inventario = BD.Inventarios.FirstOrDefault();
+            var inventario = BD.Inventarios.SingleOrDefault();
 
             if (inventario == null)
             {
@@ -88,25 +87,6 @@ namespace Cancha_Sintetica.Controladores
             BD.SaveChanges();
         }
 
-        public IEnumerable<dynamic> VerHistorialPagosMensual()
-        {
-            var historial = BD.Reservas.GroupBy(r => new { r.Fecha.Year, r.Fecha.Month }).Select(g => new { año = g.Key.Year, mes = g.Key.Month, pagos = g.Sum(r => r.PrecioTotal) }).OrderBy(h => h.año).ThenBy(h => h.mes).ToList();
-            return historial;
-        }
-
-        public IEnumerable<dynamic> CantidadReservasMensual()
-        {
-            var reservas_por_mes = BD.Reservas.GroupBy(r => new { r.Fecha.Year, r.Fecha.Month }).Select(g => new { año = g.Key.Year, mes = g.Key.Month, cantidad_reservas = g.Count() }).OrderBy(h => h.año).ThenBy(h => h.mes).ToList();
-
-            return reservas_por_mes;
-        }
-
-        public IEnumerable<dynamic> PromedioPrecioPorMes()
-        {
-            var promedio_por_mes = BD.Reservas.GroupBy(r => new { r.Fecha.Year, r.Fecha.Month }).Select(g => new { año = g.Key.Year, mes = g.Key.Month, total_reservas = g.Count(), precio_total = g.Sum(r => r.PrecioTotal), promedio_precio = g.Count() > 0 ? g.Sum(r => r.PrecioTotal) / g.Count() : 0 }).OrderBy(h => h.año).ThenBy(h => h.mes).ToList();
-
-            return promedio_por_mes;
-        }
     }
 } 
  

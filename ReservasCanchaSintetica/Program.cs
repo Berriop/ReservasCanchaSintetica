@@ -1,17 +1,21 @@
+using Microsoft.EntityFrameworkCore;
+using ReservasCanchaSintetica.Modelos;
+using System;
+
 namespace ReservasCanchaSintetica
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+            var optionsBuilder = new DbContextOptionsBuilder<CanchaSinteticaContext>();
+            optionsBuilder.UseSqlite("Data Source = cancha_sintetica.db");
+
+            var context = new CanchaSinteticaContext(optionsBuilder.Options);
+
             ApplicationConfiguration.Initialize();
-            Application.Run(new Principal());
+            Application.Run(new Principal(context));
         }
     }
 }

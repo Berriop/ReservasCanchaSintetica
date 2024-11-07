@@ -1,11 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Cancha_Sintetica.Modelos
+namespace ReservasCanchaSintetica.Modelos
 {
-    internal class Equipo
+    public class Equipo
     {
         [Key]
-        public string Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
         public string Nombre { get; set; }
         public int CantidadJugadores { get; set; }
         public ICollection<TorneoXEquipo> TorneoXEquipos { get; set; }
@@ -14,11 +16,6 @@ namespace Cancha_Sintetica.Modelos
         {
             mensajeError = "";
 
-            if (string.IsNullOrWhiteSpace(Id))
-            {
-                mensajeError = "El ID del equipo no puede estar vacío.";
-                return false;
-            }
             if (string.IsNullOrWhiteSpace(Nombre) || Nombre.Length < 3)
             {
                 mensajeError = "El nombre del equipo debe tener al menos 3 caracteres.";

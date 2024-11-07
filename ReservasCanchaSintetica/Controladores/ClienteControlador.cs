@@ -1,6 +1,6 @@
-﻿using Cancha_Sintetica.Modelos;
+﻿using ReservasCanchaSintetica.Modelos;
 
-namespace Cancha_Sintetica.Controladores
+namespace ReservasCanchaSintetica.Controladores
 {
     internal class ClienteControlador
     {
@@ -21,7 +21,7 @@ namespace Cancha_Sintetica.Controladores
             }
             ValidarClienteExistente(cliente.Documento, cliente.Correo);
 
-            BD.Add(cliente);
+            BD.Clientes.Add(cliente);
             BD.SaveChanges();
         }
 
@@ -39,10 +39,10 @@ namespace Cancha_Sintetica.Controladores
         }
 
 
-        public void RealizarReserva(string id, DateTime fecha, int cantidad_horas, int cantidad_balones, int cantidad_aguas, float precio_total, string documento_cliente, string id_cancha)
+        public void RealizarReserva(DateTime fecha, int cantidad_horas, int cantidad_balones, int cantidad_aguas, float precio_total, string documento_cliente, string id_cancha)
         {
             var controlador_reserva = new ReservaControlador(BD);
-            controlador_reserva.AgregarReserva(id, fecha, cantidad_horas, cantidad_balones, cantidad_aguas, precio_total, documento_cliente, id_cancha);
+            controlador_reserva.AgregarReserva(fecha, cantidad_horas, cantidad_balones, cantidad_aguas, precio_total, documento_cliente, id_cancha);
         }
 
         public List<Reserva> VisualizarReservas(string documento_cliente)
@@ -51,20 +51,20 @@ namespace Cancha_Sintetica.Controladores
 
             if(cliente == null)
             {
-                throw new Exception("El cliente no existe.");
+                MessageBox.Show("El cliente no existe.");
             }
 
             var reservas = BD.Reservas.Where(r => r.DocumentoCliente == documento_cliente).ToList();
 
             if (reservas.Count == 0)
             {
-                throw new Exception("No hay reservas para este cliente.");
+                MessageBox.Show("No hay reservas para este cliente.");
             }
 
             return reservas;
         }
 
-        public void CancelarReserva(string id_reserva, string documento_cliente)
+        public void CancelarReserva(int id_reserva, string documento_cliente)
         {
             var cliente = BD.Clientes.FirstOrDefault(c => c.Documento == documento_cliente);
 

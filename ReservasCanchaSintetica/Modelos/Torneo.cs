@@ -1,11 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Cancha_Sintetica.Modelos
+namespace ReservasCanchaSintetica.Modelos
 {
-    internal class Torneo
+    public class Torneo
     {
         [Key]
-        public string Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
         public string Nombre { get; set; }
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFinal { get; set; }
@@ -19,11 +21,6 @@ namespace Cancha_Sintetica.Modelos
         {
             mensaje_error = "";
 
-            if (string.IsNullOrWhiteSpace(Id))
-            {
-                mensaje_error = "El ID del torneo no puede estar vacío.";
-                return false;
-            }
             if (string.IsNullOrWhiteSpace(Nombre) || Nombre.Length < 3)
             {
                 mensaje_error = "El nombre del torneo debe tener al menos 3 caracteres.";

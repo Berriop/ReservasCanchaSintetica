@@ -1,6 +1,6 @@
-﻿using Cancha_Sintetica.Modelos;
+﻿using ReservasCanchaSintetica.Modelos;
 
-namespace Cancha_Sintetica.Controladores
+namespace ReservasCanchaSintetica.Controladores
 {
     internal class CanchaControlador
     {
@@ -11,16 +11,16 @@ namespace Cancha_Sintetica.Controladores
             BD = bd;
         }
 
-        public void AgregarCancha(string id, float precio)
+        public void AgregarCancha(float precio)
         {
-            var cancha = new Cancha { Id = id, Precio = precio};
+            var cancha = new Cancha { Precio = precio};
 
             if(!cancha.ValidarCancha(out string mensaje_error))
             {
                 throw new Exception(mensaje_error);
             }
 
-            BD.Add(cancha);
+            BD.Canchas.Add(cancha);
             BD.SaveChanges();
         }
     }

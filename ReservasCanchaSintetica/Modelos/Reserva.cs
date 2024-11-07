@@ -1,12 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Cancha_Sintetica.Modelos
+namespace ReservasCanchaSintetica.Modelos
 {
-    internal class Reserva
+    public class Reserva
     {
         [Key]
-        public string Id { get; set; }
+        
+        public int Id { get; set; }
         public DateTime Fecha { get; set; }
         public int CantidadHoras { get; set; }
         public int CantidadBalones { get; set; }

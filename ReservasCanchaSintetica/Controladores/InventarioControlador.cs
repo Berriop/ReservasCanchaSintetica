@@ -1,6 +1,6 @@
-﻿using Cancha_Sintetica.Modelos;
+﻿using ReservasCanchaSintetica.Modelos;
 
-namespace Cancha_Sintetica.Controladores
+namespace ReservasCanchaSintetica.Controladores
 {
     internal class InventarioControlador
     {
@@ -11,16 +11,16 @@ namespace Cancha_Sintetica.Controladores
             BD = bd;
         }
 
-        public void AgregarInventario(string id, int cantidad_balones, int cantidad_aguas)
+        public void AgregarInventario(int cantidad_balones, int cantidad_aguas)
         {
-            var inventario = new Inventario { Id = id, CantidadBalones = cantidad_balones, CantidadAguas = cantidad_aguas };
+            var inventario = new Inventario {CantidadBalones = cantidad_balones, CantidadAguas = cantidad_aguas };
 
             if (!inventario.ValidarInventario(out string mensaje_error))
             {
                 throw new Exception(mensaje_error);
             }
 
-            BD.Add(inventario);
+            BD.Inventarios.Add(inventario);
             BD.SaveChanges();
         }
 

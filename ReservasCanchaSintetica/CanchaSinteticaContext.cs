@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Cancha_Sintetica.Modelos;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ReservasCanchaSintetica.Modelos;
 
-namespace Cancha_Sintetica
+namespace ReservasCanchaSintetica
 {
-    internal class CanchaSinteticaContext : DbContext
+    public class CanchaSinteticaContext : DbContext
     {
+        public CanchaSinteticaContext(DbContextOptions options) : base(options)
+        {
+        }
+
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Reserva> Reservas { get; set; }
         public DbSet<Administrador> Administradores { get; set; }
