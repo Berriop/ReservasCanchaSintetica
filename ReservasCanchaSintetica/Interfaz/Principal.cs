@@ -13,11 +13,6 @@ namespace ReservasCanchaSintetica
             this.Context = context;
         }
 
-        private void Principal_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private async void button1_Click(object sender, EventArgs e)
         {
             string documento = text_usuario.Text;

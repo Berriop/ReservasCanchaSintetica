@@ -7,12 +7,12 @@ namespace ReservasCanchaSintetica
     public partial class ConfirmarReserva : Form
     {
         public Cliente Cliente { get; set; }
-        public string CanchaSeleccionada { get; set; }
+        public int CanchaSeleccionada { get; set; }
         public DateTime FechaReserva { get; set; }
         public string HoraInicio { get; set; }
         public int CantidadHoras { get; set; }
         public CanchaSinteticaContext Context { get; set; }
-        public ConfirmarReserva(Cliente cliente, string cancha_seleccionada, DateTime fecha_reserva, string hora_inicio, int cantidad_horas, CanchaSinteticaContext context)
+        public ConfirmarReserva(Cliente cliente, int cancha_seleccionada, DateTime fecha_reserva, string hora_inicio, int cantidad_horas, CanchaSinteticaContext context)
         {
             InitializeComponent();
             this.Cliente = cliente;

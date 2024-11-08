@@ -19,7 +19,7 @@ namespace ReservasCanchaSintetica.Modelos
         public string IdTorneo { get; set; }
         public Torneo Torneo { get; set; }
         [ForeignKey(nameof(IdCancha))]
-        public string IdCancha { get; set; }
+        public int IdCancha { get; set; }
         public Cancha Cancha { get; set; }
         public ICollection<CanchaXReservaTorneo> CanchaXReservaTorneos { get; set; }
 
@@ -50,11 +50,6 @@ namespace ReservasCanchaSintetica.Modelos
             if (string.IsNullOrWhiteSpace(IdTorneo))
             {
                 mensaje_error = "La cancha debe tener un ID de torneo asociado.";
-                return false;
-            }
-            if (string.IsNullOrWhiteSpace(IdCancha))
-            {
-                mensaje_error = "La cancha debe tener un ID de cancha asociado.";
                 return false;
             }
 

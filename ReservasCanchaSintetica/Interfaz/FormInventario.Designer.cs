@@ -117,14 +117,14 @@
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
-            // dataGridView1
+            // datagrid_inventario
             // 
             datagrid_inventario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             datagrid_inventario.Columns.AddRange(new DataGridViewColumn[] { CantidadBalones, CantidadAguas });
             datagrid_inventario.Location = new Point(262, 371);
-            datagrid_inventario.Name = "dataGridView1";
+            datagrid_inventario.Name = "datagrid_inventario";
             datagrid_inventario.RowHeadersWidth = 51;
-            datagrid_inventario.Size = new Size(304, 60);
+            datagrid_inventario.Size = new Size(386, 154);
             datagrid_inventario.TabIndex = 11;
             // 
             // CantidadBalones

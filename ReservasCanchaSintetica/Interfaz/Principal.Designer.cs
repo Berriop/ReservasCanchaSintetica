@@ -125,7 +125,6 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "Principal";
             Text = "Reservas Cancha Sintética";
-            Load += Principal_Load;
             ResumeLayout(false);
             PerformLayout();
         }

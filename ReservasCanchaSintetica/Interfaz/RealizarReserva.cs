@@ -22,7 +22,7 @@ namespace ReservasCanchaSintetica
                 MessageBox.Show("Por favor, seleccione una cancha.");
                 return;
             }
-            string cancha_seleccionada = combobox_cancha.SelectedItem.ToString();
+            int cancha_seleccionada = int.Parse(combobox_cancha.SelectedItem.ToString());
 
             DateTime fecha_reserva = datetimepicker_fecha.Value;
             if (fecha_reserva == null)

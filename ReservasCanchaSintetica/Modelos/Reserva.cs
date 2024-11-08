@@ -6,7 +6,7 @@ namespace ReservasCanchaSintetica.Modelos
     public class Reserva
     {
         [Key]
-        
+
         public int Id { get; set; }
         public DateTime Fecha { get; set; }
         public int CantidadHoras { get; set; }
@@ -15,11 +15,9 @@ namespace ReservasCanchaSintetica.Modelos
         public float PrecioTotal { get; set; }
         [ForeignKey(nameof(DocumentoCliente))]
         public string DocumentoCliente { get; set; }
-        public Cliente Cliente { get; set; }
 
         [ForeignKey(nameof(IdCancha))]
-        public string IdCancha { get; set; }
-        public Cancha Cancha { get; set; }
+        public int IdCancha { get; set; }
 
 
         public bool ValidarReserva(out string mensaje_error)

@@ -10,10 +10,8 @@ namespace ReservasCanchaSintetica.Modelos
         public int Id { get; set; }
         [ForeignKey(nameof(IdEquipo))]
         public int IdEquipo { get; set; }
-        public Equipo Equipo { get; set; }
         [ForeignKey(nameof(IdTorneo))]
         public int IdTorneo { get; set; }
-        public Torneo Torneo { get; set; }
 
     }
 }

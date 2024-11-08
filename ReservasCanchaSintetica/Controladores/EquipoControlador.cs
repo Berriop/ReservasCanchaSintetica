@@ -2,9 +2,9 @@
 
 namespace ReservasCanchaSintetica.Controladores
 {
-    internal class EquipoControlador
+    public class EquipoControlador
     {
-        private readonly CanchaSinteticaContext BD;
+        public CanchaSinteticaContext BD;
 
         public EquipoControlador(CanchaSinteticaContext bd)
         {
@@ -15,9 +15,10 @@ namespace ReservasCanchaSintetica.Controladores
         {
             var equipo = new Equipo {Nombre = nombre, CantidadJugadores = cantidad_jugadores };
 
-            if(equipo.ValidarEquipo(out string mensaje_error))
+            if(!equipo.ValidarEquipo(out string mensaje_error))
             {
-                throw new Exception(mensaje_error);
+                MessageBox.Show(mensaje_error);
+                return;
             }
 
             ValidarEquiposNoRepetidos();
@@ -34,7 +35,8 @@ namespace ReservasCanchaSintetica.Controladores
             {
                 if (!equipos_inscritos.Add(equipo.Nombre))
                 {
-                    throw new Exception($"El equipo '{equipo.Nombre}' ya está inscrito en el torneo.");
+                    MessageBox.Show($"El equipo '{equipo.Nombre}' ya está inscrito.");
+                    return;
                 }
             }
         }

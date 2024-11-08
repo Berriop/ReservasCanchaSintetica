@@ -5,10 +5,6 @@ namespace ReservasCanchaSintetica
 {
     public class CanchaSinteticaContext : DbContext
     {
-        public CanchaSinteticaContext(DbContextOptions options) : base(options)
-        {
-        }
-
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Reserva> Reservas { get; set; }
         public DbSet<Administrador> Administradores { get; set; }

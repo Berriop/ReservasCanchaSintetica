@@ -2,9 +2,9 @@
 
 namespace ReservasCanchaSintetica.Controladores
 {
-    internal class TorneoControlador
+    public class TorneoControlador
     {
-        private readonly CanchaSinteticaContext BD;
+        public CanchaSinteticaContext BD;
 
         public TorneoControlador(CanchaSinteticaContext bd)
         {
@@ -17,7 +17,8 @@ namespace ReservasCanchaSintetica.Controladores
 
             if (!torneo.ValidarTorneo(out string mensaje_error))
             {
-                throw new Exception(mensaje_error);
+                MessageBox.Show(mensaje_error);
+                return;
             }
 
             BD.Torneos.Add(torneo);

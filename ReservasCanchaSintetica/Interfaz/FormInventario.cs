@@ -43,20 +43,20 @@ namespace ReservasCanchaSintetica
 
         private void CargarInventario()
         {
-            using (var context = Context)
+            var inventario = Context.Inventarios.SingleOrDefault();
+            if (inventario != null)
             {
-                var inventario = context.Inventarios.SingleOrDefault();
-
-                if (inventario != null)
-                {
-                    datagrid_inventario.Rows.Clear();
-                    datagrid_inventario.Rows.Add(inventario.CantidadBalones, inventario.CantidadAguas);
-                }
-                else
-                {
-                    MessageBox.Show("No se encontró inventario en la base de datos.");
-                }
+      
+                datagrid_inventario.Rows.Clear();
+      
+                datagrid_inventario.Rows.Add(inventario.CantidadBalones, inventario.CantidadAguas);
             }
+            else
+            {
+      
+                MessageBox.Show("No se encontró inventario en la base de datos.");
+            }
+
         }
     }
 }

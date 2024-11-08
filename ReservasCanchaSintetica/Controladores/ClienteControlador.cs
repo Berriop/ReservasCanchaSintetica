@@ -4,7 +4,7 @@ namespace ReservasCanchaSintetica.Controladores
 {
     internal class ClienteControlador
     {
-        private readonly CanchaSinteticaContext BD;
+        public CanchaSinteticaContext BD;
 
         public ClienteControlador(CanchaSinteticaContext bd)
         {
@@ -17,29 +17,16 @@ namespace ReservasCanchaSintetica.Controladores
 
             if (!cliente.ValidarCliente(out string mensaje_error))
             {
-                throw new Exception(mensaje_error);
+                MessageBox.Show(mensaje_error);
+                return;
             }
-            ValidarClienteExistente(cliente.Documento, cliente.Correo);
 
             BD.Clientes.Add(cliente);
             BD.SaveChanges();
         }
 
-        public bool ValidarClienteExistente(string documento, string correo)
-        {
-            if (BD.Clientes.Any(c => c.Documento == documento))
-            {
-                throw new Exception("Ya existe un cliente con este documento.");
-            }
-            if (BD.Clientes.Any(c => c.Correo == correo))
-            {
-                throw new Exception("Ya existe un cliente registrado con este correo electrónico.");
-            }
-            return true;
-        }
 
-
-        public void RealizarReserva(DateTime fecha, int cantidad_horas, int cantidad_balones, int cantidad_aguas, float precio_total, string documento_cliente, string id_cancha)
+        public void RealizarReserva(DateTime fecha, int cantidad_horas, int cantidad_balones, int cantidad_aguas, float precio_total, string documento_cliente, int id_cancha)
         {
             var controlador_reserva = new ReservaControlador(BD);
             controlador_reserva.AgregarReserva(fecha, cantidad_horas, cantidad_balones, cantidad_aguas, precio_total, documento_cliente, id_cancha);
@@ -70,19 +57,22 @@ namespace ReservasCanchaSintetica.Controladores
 
             if (cliente == null)
             {
-                throw new Exception("El cliente no existe.");
+                MessageBox.Show("El cliente no existe.");
+                return;
             }
 
             var reserva = BD.Reservas.FirstOrDefault(r => r.Id == id_reserva);
 
             if(reserva == null)
             {
-                throw new Exception("La reserva no existe");
+                MessageBox.Show("La reserva no existe");
+                return;
             }
 
             if(reserva.DocumentoCliente != documento_cliente)
             {
-                throw new Exception("La reserva no pertenece a este cliente");
+                MessageBox.Show("La reserva no pertenece a este cliente");
+                return;
             }
 
             BD.Reservas.Remove(reserva);

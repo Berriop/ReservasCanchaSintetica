@@ -23,18 +23,14 @@
 
             try
             {
-                using (var context = Context)
-                {
-                    var reservas_mes = context.Reservas.Where(r => r.Fecha.Month == mes_seleccionado && r.Fecha.Year == año_seleccionado).ToList();
+                var reservas_mes = Context.Reservas.Where(r => r.Fecha.Month == mes_seleccionado && r.Fecha.Year == año_seleccionado).ToList();
+                float ganancias_totales = reservas_mes.Sum(r => r.PrecioTotal);
+                int cantidad_reservas = reservas_mes.Count;
+                float promedio_precio = cantidad_reservas > 0 ? ganancias_totales / cantidad_reservas : 0;
+                label_pago.Text = $"{ganancias_totales}";
+                label_cantidad_reservas.Text = $"{cantidad_reservas}";
+                label_promedio.Text = $"{promedio_precio}";
 
-                    float ganancias_totales = reservas_mes.Sum(r => r.PrecioTotal);
-                    int cantidad_reservas = reservas_mes.Count;
-                    float promedio_precio = cantidad_reservas > 0 ? ganancias_totales / cantidad_reservas : 0;
-
-                    label_pago.Text = $"{ganancias_totales}";
-                    label_cantidad_reservas.Text = $"{cantidad_reservas}";
-                    label_promedio.Text = $"{promedio_precio}";
-                }
             }
             catch (Exception ex)
             {

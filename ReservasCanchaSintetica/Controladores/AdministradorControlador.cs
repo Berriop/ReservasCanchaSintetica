@@ -2,9 +2,9 @@
 
 namespace ReservasCanchaSintetica.Controladores
 {
-    internal class AdministradorControlador
+    public class AdministradorControlador
     {
-        private readonly CanchaSinteticaContext BD;
+        public CanchaSinteticaContext BD;
 
         public AdministradorControlador(CanchaSinteticaContext bd)
         {
@@ -36,7 +36,7 @@ namespace ReservasCanchaSintetica.Controladores
             controlador_torneo.AgregarTorneo(nombre, fecha_iniico, fecha_final, valor_inscripcion, premio);
         }
 
-        public void RealizarReservaTorneo(string id, DateTime fecha, int cantidad_horas, int cantidad_balones, int cantidad_aguas, string documento_administrador, string id_torneo, string id_cancha)
+        public void RealizarReservaTorneo(string id, DateTime fecha, int cantidad_horas, int cantidad_balones, int cantidad_aguas, string documento_administrador, string id_torneo, int id_cancha)
         {
             var controlador_reserva = new ReservaTorneoControlador(BD);
             controlador_reserva.AgregarReservaTorneo(fecha, cantidad_horas, cantidad_balones, cantidad_aguas, documento_administrador, id_torneo, id_cancha);
@@ -48,12 +48,14 @@ namespace ReservasCanchaSintetica.Controladores
 
             if (inventario == null)
             {
-                throw new Exception("El inventario no existe en la base de datos.");
+                MessageBox.Show("El inventario no existe en la base de datos.");
+                return;
             }
 
             if (cantidad_balones < 0 || cantidad_aguas < 0)
             {
-                throw new ArgumentException("Las cantidades no pueden ser negativas.");
+                MessageBox.Show("Las cantidades no pueden ser negativas.");
+                return;
             }
 
             inventario.CantidadBalones += cantidad_balones;
@@ -68,7 +70,8 @@ namespace ReservasCanchaSintetica.Controladores
             var dia = BD.DiasBloqueados.FirstOrDefault(d => d.Fecha.Date == fecha.Date);
             if (dia != null)
             {
-                throw new Exception("El día ya está bloqueado para reservas.");
+                MessageBox.Show("El día ya está bloqueado para reservas.");
+                return;
             }
 
             BD.Add(dia_a_bloquear);
@@ -80,7 +83,8 @@ namespace ReservasCanchaSintetica.Controladores
             var dia_bloqueado = BD.DiasBloqueados.FirstOrDefault(d => d.Fecha.Date == fecha.Date);
             if (dia_bloqueado == null)
             {
-                throw new Exception("No se encontro un dia bloqueado para la fecha especificada");
+                MessageBox.Show("No se encontro un dia bloqueado para la fecha especificada");
+                return;
             }
 
             BD.DiasBloqueados.Remove(dia_bloqueado);

@@ -1,6 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using ReservasCanchaSintetica.Modelos;
-using System;
 
 namespace ReservasCanchaSintetica
 {
@@ -12,7 +10,7 @@ namespace ReservasCanchaSintetica
             var optionsBuilder = new DbContextOptionsBuilder<CanchaSinteticaContext>();
             optionsBuilder.UseSqlite("Data Source = cancha_sintetica.db");
 
-            var context = new CanchaSinteticaContext(optionsBuilder.Options);
+            var context = new CanchaSinteticaContext();
 
             ApplicationConfiguration.Initialize();
             Application.Run(new Principal(context));

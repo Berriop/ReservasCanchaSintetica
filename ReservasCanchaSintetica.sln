@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReservasCanchaSintetica", "ReservasCanchaSintetica\ReservasCanchaSintetica.csproj", "{2703D967-CE43-4FDB-8B6D-EF45A8D16EA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReservasCanchaSintetica", "ReservasCanchaSintetica\ReservasCanchaSintetica.csproj", "{2703D967-CE43-4FDB-8B6D-EF45A8D16EA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReservasCanchaSintetica.Tests", "ReservasCanchaSintetica.Tests\ReservasCanchaSintetica.Tests.csproj", "{CDBE5AA7-C684-4AB5-98D8-BF258843FB0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{2703D967-CE43-4FDB-8B6D-EF45A8D16EA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2703D967-CE43-4FDB-8B6D-EF45A8D16EA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2703D967-CE43-4FDB-8B6D-EF45A8D16EA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDBE5AA7-C684-4AB5-98D8-BF258843FB0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDBE5AA7-C684-4AB5-98D8-BF258843FB0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDBE5AA7-C684-4AB5-98D8-BF258843FB0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDBE5AA7-C684-4AB5-98D8-BF258843FB0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

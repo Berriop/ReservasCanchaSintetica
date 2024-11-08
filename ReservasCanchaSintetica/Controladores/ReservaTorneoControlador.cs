@@ -11,7 +11,7 @@ namespace ReservasCanchaSintetica.Controladores
             BD = bd;
         }
 
-        public void AgregarReservaTorneo(DateTime fecha, int cantidad_horas, int cantidad_balones, int cantidad_aguas, string documento_administrador, string id_torneo, string id_cancha)
+        public void AgregarReservaTorneo(DateTime fecha, int cantidad_horas, int cantidad_balones, int cantidad_aguas, string documento_administrador, string id_torneo, int id_cancha)
         {
             var reserva_torneo = new ReservaTorneo { Fecha = fecha, CantidadHoras = cantidad_horas, CantidadBalones = cantidad_balones, CantidadAguas = cantidad_aguas, DocumentoAdministrador = documento_administrador, IdTorneo = id_torneo, IdCancha = id_cancha };
             
@@ -37,7 +37,7 @@ namespace ReservasCanchaSintetica.Controladores
             BD.SaveChanges();
         }
 
-        public bool VerificarDisponibilidadParaTorneos(string id_cancha, DateTime fecha, int cantidad_horas)
+        public bool VerificarDisponibilidadParaTorneos(int id_cancha, DateTime fecha, int cantidad_horas)
         {
             var reservas = BD.Reservas.Where(r => r.IdCancha == id_cancha && r.Fecha < fecha.AddHours(cantidad_horas)).ToList();
             if (reservas.Any())
